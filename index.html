@@ -1,1 +1,529 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jordan Avery — Portfolio</title>
+<meta name="description" content="Jordan Avery — designer &amp; developer. Selected work, background, and contact." />
 
+<!-- ============================================================
+     HOW TO CUSTOMIZE THIS FILE
+     1. Replace "Jordan Avery" everywhere with your name.
+     2. Edit the HERO, ABOUT, WORK, and CONTACT sections below —
+        each is clearly marked with an EDIT ME comment.
+     3. Swap the email / social links in the footer + hero.
+     4. To publish on GitHub Pages: put this file at the root of
+        your repo, name it index.html, then go to
+        Settings → Pages → set the source branch. That's it.
+     ============================================================ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  /* ---------- Design tokens ---------- */
+  :root {
+    --paper: #fafafa;
+    --surface: #f1f0eb;
+    --ink: #16181c;
+    --muted: #6b6f76;
+    --accent: #3452ff;
+    --accent-ink: #ffffff;
+    --border: #e3e1da;
+    --radius: 3px;
+    --max: 760px;
+    --gap: clamp(1.25rem, 3vw, 2rem);
+    --serif: "Fraunces", Georgia, serif;
+    --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  [data-theme="dark"] {
+    --paper: #101114;
+    --surface: #17181c;
+    --ink: #f4f4f2;
+    --muted: #9a9ea7;
+    --accent: #7c93ff;
+    --accent-ink: #101114;
+    --border: #26282e;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    transition: background 0.25s ease, color 0.25s ease;
+  }
+
+  a { color: inherit; }
+
+  .wrap {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* ---------- Header ---------- */
+  header.site {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    backdrop-filter: blur(8px);
+    background: color-mix(in srgb, var(--paper) 82%, transparent);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-row {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .mark {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.05rem;
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+
+  nav.links {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+  }
+
+  nav.links a {
+    position: relative;
+    text-decoration: none;
+    font-size: 0.9rem;
+    color: var(--muted);
+    padding-bottom: 2px;
+  }
+
+  nav.links a::after {
+    content: "";
+    position: absolute;
+    left: 0; bottom: -2px;
+    width: 0%;
+    height: 1px;
+    background: var(--accent);
+    transition: width 0.2s ease;
+  }
+
+  nav.links a:hover,
+  nav.links a.active { color: var(--ink); }
+  nav.links a:hover::after,
+  nav.links a.active::after { width: 100%; }
+
+  #theme-toggle {
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--ink);
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    font-size: 0.9rem;
+    transition: border-color 0.2s ease;
+  }
+  #theme-toggle:hover { border-color: var(--accent); }
+  #theme-toggle:focus-visible,
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    padding: clamp(4rem, 12vw, 7rem) 0 clamp(3rem, 8vw, 4.5rem);
+  }
+
+  .eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin: 0 0 1rem;
+  }
+
+  h1.name {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(2.6rem, 7vw, 4.2rem);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    margin: 0 0 1rem;
+  }
+
+  .hero p.lede {
+    max-width: 46ch;
+    font-size: 1.08rem;
+    color: var(--muted);
+    margin: 0 0 2rem;
+  }
+
+  .hero-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .hero-links a {
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 500;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2px;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+  .hero-links a:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ---------- Section shell ---------- */
+  section { padding: clamp(3rem, 7vw, 4.5rem) 0; }
+  section + section { border-top: 1px solid var(--border); }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
+
+  h2.section-title {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 1.5rem;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  .section-count {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* ---------- About ---------- */
+  .about p { max-width: 62ch; color: var(--ink); }
+  .about p.muted { color: var(--muted); }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .tags span {
+    font-size: 0.78rem;
+    padding: 0.35rem 0.7rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--muted);
+  }
+
+  /* ---------- Work ---------- */
+  .project {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--border);
+    position: relative;
+  }
+  .project:first-of-type { border-top: none; }
+
+  .project-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .project-title {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    transition: color 0.2s ease;
+  }
+
+  .project:hover .project-title { color: var(--accent); }
+
+  .project-year {
+    font-size: 0.82rem;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .project-desc {
+    margin-top: 0.4rem;
+    color: var(--muted);
+    max-width: 58ch;
+    font-size: 0.95rem;
+  }
+
+  .project-tags {
+    margin-top: 0.7rem;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .project-tags span {
+    font-size: 0.72rem;
+    color: var(--muted);
+  }
+  .project-tags span:not(:last-child)::after { content: "·"; margin-left: 0.5rem; }
+
+  /* ---------- Contact / footer ---------- */
+  footer.site {
+    padding: clamp(3rem, 8vw, 4.5rem) 0 3rem;
+  }
+
+  footer.site h2.section-title { margin-bottom: 0.75rem; }
+
+  footer.site p.muted {
+    color: var(--muted);
+    max-width: 48ch;
+    margin: 0 0 2rem;
+  }
+
+  .contact-email {
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, 5vw, 2.2rem);
+    text-decoration: none;
+    display: inline-block;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 4px;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+  .contact-email:hover { color: var(--accent); border-color: var(--accent); }
+
+  .socials {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1.5rem;
+  }
+  .socials a {
+    font-size: 0.85rem;
+    text-decoration: none;
+    color: var(--muted);
+    border-bottom: 1px solid transparent;
+  }
+  .socials a:hover { color: var(--ink); border-color: var(--border); }
+
+  .foot-note {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.78rem;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 560px) {
+    nav.links { gap: 1.1rem; }
+    nav.links a:not(.always-show) { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="nav-row">
+    <a href="#top" class="mark">JA</a>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#contact" class="always-show">Contact</a>
+      <button id="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">◐</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ================= HERO — EDIT ME ================= -->
+  <section class="hero wrap" id="top">
+    <p class="eyebrow">Designer &amp; Developer</p>
+    <h1 class="name">Jordan Avery</h1>
+    <p class="lede">
+      I build small, considered products — interfaces that hold up under real use,
+      and the code underneath them. Currently based in Toronto, working with a
+      handful of teams on design systems and front-end architecture.
+    </p>
+    <div class="hero-links">
+      <a href="mailto:hello@jordanavery.dev">hello@jordanavery.dev</a>
+      <a href="#work">See work ↓</a>
+      <a href="/resume.pdf">Resume</a>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT — EDIT ME ================= -->
+  <section class="wrap about reveal" id="about">
+    <div class="section-head">
+      <h2 class="section-title">About</h2>
+    </div>
+    <p>
+      I've spent the last several years moving between design and engineering —
+      close enough to the pixels to care how they're built, and close enough to
+      the code to know when a shortcut will cost you later. I like small teams,
+      clear writing, and interfaces that get out of the way.
+    </p>
+    <p class="muted">
+      Before this I worked on internal tools and a couple of early-stage products
+      that didn't make it — both taught me more than the ones that did.
+    </p>
+    <div class="tags">
+      <span>TypeScript</span>
+      <span>React</span>
+      <span>Design Systems</span>
+      <span>Figma</span>
+      <span>Accessibility</span>
+      <span>Node.js</span>
+    </div>
+  </section>
+
+  <!-- ================= WORK — EDIT ME ================= -->
+  <!-- Duplicate the .project block to add more entries -->
+  <section class="wrap reveal" id="work">
+    <div class="section-head">
+      <h2 class="section-title">Selected Work</h2>
+      <span class="section-count">04 projects</span>
+    </div>
+
+    <a class="project" href="#" target="_blank" rel="noopener">
+      <div class="project-row">
+        <span class="project-title">Studio — a lightweight design system</span>
+        <span class="project-year">2025</span>
+      </div>
+      <p class="project-desc">A token-driven component library shared across three product teams, built to cut design-to-dev handoff time in half.</p>
+      <div class="project-tags"><span>React</span><span>Storybook</span><span>Design tokens</span></div>
+    </a>
+
+    <a class="project" href="#" target="_blank" rel="noopener">
+      <div class="project-row">
+        <span class="project-title">Northbound — trip planning for small teams</span>
+        <span class="project-year">2024</span>
+      </div>
+      <p class="project-desc">A booking and itinerary tool for teams under 20 people, from first sketch to a working product with paying customers.</p>
+      <div class="project-tags"><span>Next.js</span><span>Postgres</span><span>Product design</span></div>
+    </a>
+
+    <a class="project" href="#" target="_blank" rel="noopener">
+      <div class="project-row">
+        <span class="project-title">Ledger — a calmer expense tracker</span>
+        <span class="project-year">2023</span>
+      </div>
+      <p class="project-desc">A personal finance app built around one idea: fewer numbers on screen at once, better decisions.</p>
+      <div class="project-tags"><span>Swift</span><span>Charts</span></div>
+    </a>
+
+    <a class="project" href="#" target="_blank" rel="noopener">
+      <div class="project-row">
+        <span class="project-title">Field Notes — a writing template</span>
+        <span class="project-year">2022</span>
+      </div>
+      <p class="project-desc">An open-source Jekyll theme for long-form writing, now used on a few hundred personal sites.</p>
+      <div class="project-tags"><span>Jekyll</span><span>Open source</span></div>
+    </a>
+  </section>
+
+  <!-- ================= CONTACT — EDIT ME ================= -->
+  <footer class="site wrap reveal" id="contact">
+    <h2 class="section-title">Get in touch</h2>
+    <p class="muted">Open to new projects and short-term collaborations. I usually reply within a day or two.</p>
+    <a class="contact-email" href="mailto:hello@jordanavery.dev">hello@jordanavery.dev</a>
+    <div class="socials">
+      <a href="#" target="_blank" rel="noopener">GitHub</a>
+      <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="#" target="_blank" rel="noopener">X / Twitter</a>
+    </div>
+    <div class="foot-note">
+      <span>© <span id="year"></span> Jordan Avery</span>
+      <span>Built with HTML &amp; CSS</span>
+    </div>
+  </footer>
+
+</main>
+
+<script>
+  // Footer year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Theme toggle, persisted
+  const root = document.documentElement;
+  const toggleBtn = document.getElementById('theme-toggle');
+  const saved = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (saved) {
+    root.setAttribute('data-theme', saved);
+  } else if (prefersDark) {
+    root.setAttribute('data-theme', 'dark');
+  }
+  toggleBtn.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  });
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+
+  // Scrollspy for nav active state
+  const sections = ['about', 'work', 'contact'].map(id => document.getElementById(id));
+  const navLinks = document.querySelectorAll('nav.links a[href^="#"]');
+  const spy = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const link = document.querySelector(`nav.links a[href="#${entry.target.id}"]`);
+      if (!link) return;
+      if (entry.isIntersecting) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -50% 0px' });
+  sections.forEach(sec => sec && spy.observe(sec));
+</script>
+
+</body>
+</html>
